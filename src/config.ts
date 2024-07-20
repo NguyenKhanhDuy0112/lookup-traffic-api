@@ -1,0 +1,27 @@
+export const config = {
+    APP_ENV: process.env.APP_ENV || "development",
+    PORT: process.env.PORT || "3010",
+    BASE_PATH: process.env.BASE_PATH || "/v1/api",
+    API_KEY: process.env.API_KEY || "177FBAE90B7A40428D73B4EF677879FF",
+    OTP_INTERNAL: process.env.OTP_INTERNAL || "210324",
+    SWAGGER_PATH: process.env.SWAGGER_PATH || "/v1/api/swagger",
+    AUTH: {
+        SALT_ROUND: Number(process.env.AUTH_SALT_ROUND || "10"),
+        JWT_SECRET: process.env.AUTH_JWT_SECRET || "F6r5TCzw28TCuatg_DuyDev_E7FVFWSy63LVVtEQ",
+        JWT_REFRESH_SECRET: process.env.AUTH_JWT_REFRESH_SECRET || "5dEusbU5achh9bXB_Duydev.com_g7KvzTQH5vt267jm",
+        JWT_EXPIRED_IN: process.env.AUTH_JWT_EXPIRED_IN || "1d",
+        JWT_REFRESH_EXPIRED_IN: process.env.AUTH_JWT_REFRESH_EXPIRED_IN || "30d",
+        OTP_LENGTH: Number(process.env.AUTH_OTP_LENGTH || "6"),
+    },
+    POSTGRES_LOOKUP_TRAFFIC: {
+        HOST: process.env.POSTGRES_HOST_LOOKUP_TRAFFIC,
+        PORT: process.env.POSTGRES_PORT_LOOKUP_TRAFFIC,
+        USERNAME: process.env.POSTGRES_USERNAME_LOOKUP_TRAFFIC,
+        PASSWORD: process.env.POSTGRES_PASSWORD_LOOKUP_TRAFFIC,
+        DATABASE: process.env.POSTGRES_DATABASE_LOOKUP_TRAFFIC,
+        IS_SSL: JSON.parse(process.env.POSTGRES_IS_SSL_LOOKUP_TRAFFIC || "false"),
+        IS_SYNCHORNIZE: JSON.parse(process.env.POSTGRES_IS_SYNCHORNIZE_LOOKUP_TRAFFIC || "false"),
+        ENCRYPT_KEY: process.env.POSTGRES_ENCRYPT_KEY_LOOKUP_TRAFFIC || "f77ba0fb6a7720a173b9b7036baedcbb",
+        ENCRYPTION_IV: process.env.POSTGRES_ENCRYPTION_IV_LOOKUP_TRAFFIC || "dd3a051bad71f77d",
+    },
+}
