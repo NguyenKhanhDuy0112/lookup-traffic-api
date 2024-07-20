@@ -1,10 +1,10 @@
 export const config = {
     APP_ENV: process.env.APP_ENV || "development",
     PORT: process.env.PORT || "3010",
-    BASE_PATH: process.env.BASE_PATH || "/v1/api",
+    BASE_PATH: process.env.BASE_PATH || "/api/v1",
     API_KEY: process.env.API_KEY || "177FBAE90B7A40428D73B4EF677879FF",
     OTP_INTERNAL: process.env.OTP_INTERNAL || "210324",
-    SWAGGER_PATH: process.env.SWAGGER_PATH || "/v1/api/swagger",
+    SWAGGER_PATH: process.env.SWAGGER_PATH || "/api/v1/swagger",
     AUTH: {
         SALT_ROUND: Number(process.env.AUTH_SALT_ROUND || "10"),
         JWT_SECRET: process.env.AUTH_JWT_SECRET || "F6r5TCzw28TCuatg_DuyDev_E7FVFWSy63LVVtEQ",
