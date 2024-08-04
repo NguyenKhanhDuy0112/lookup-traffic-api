@@ -1,7 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from "@nestjs/common"
 import { UserRepository } from "src/repository/user.repository"
 import { User } from "src/entity/pg_lookup_traffic/user.entity"
-import { CreateUserDto } from "src/DTO/user/createUser.dto"
 import { UpdateUserDto } from "src/DTO/user/updateUser.dto"
 import { ErrorConstant } from "src/share/contant/error.contant"
 import { BaseService } from "./base.service"
@@ -28,13 +27,8 @@ export class UserService extends BaseService {
                 HttpStatus.NOT_FOUND
             )
         }
-        delete user.password
+        
         return this.createSuccessResponse(user, MessageResponse.SUCCESS, MessageResponse.SUCCESS)
-    }
-
-    async createUser(user: CreateUserDto): Promise<CreateUserDto> {
-        const newUser = this.userRepository.create(user)
-        return this.userRepository.save(newUser)
     }
 
     async updateUser(userId: string, userData: UpdateUserDto): Promise<StandardResponse<User>> {

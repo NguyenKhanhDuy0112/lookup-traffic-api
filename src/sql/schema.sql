@@ -1,10 +1,13 @@
+-- Enable uuid-ossp extension for UUID generation
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
--- Bảng users
+-- Define enum type for status in English
+CREATE TYPE violation_status AS ENUM ('Unpaid', 'Paid');
+
+-- Create users table
 CREATE TABLE users (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     username VARCHAR(50) NOT NULL,
-    password VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
     full_name VARCHAR(100),
     gender VARCHAR(10),
@@ -17,10 +20,11 @@ CREATE TABLE users (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Bảng vehicles
+-- Create vehicles table
 CREATE TABLE vehicles (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     user_id UUID REFERENCES users(id),
+    image_url TEXT NOT NULL,
     vehicle_number VARCHAR(50) NOT NULL,
     vehicle_type VARCHAR(50),
     brand VARCHAR(50),
@@ -31,7 +35,7 @@ CREATE TABLE vehicles (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Bảng traffic_violations
+-- Create traffic_violations table
 CREATE TABLE traffic_violations (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     user_id UUID REFERENCES users(id),
@@ -41,12 +45,12 @@ CREATE TABLE traffic_violations (
     location VARCHAR(200),
     fine_amount DECIMAL(10, 2),
     points_deducted INT,
-    status VARCHAR(50),
+    status violation_status,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Bảng driver_licenses
+-- Create driver_licenses table
 CREATE TABLE driver_licenses (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     user_id UUID REFERENCES users(id),
@@ -59,7 +63,7 @@ CREATE TABLE driver_licenses (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Bảng insurance_policies
+-- Create insurance_policies table
 CREATE TABLE insurance_policies (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     vehicle_id UUID REFERENCES vehicles(id),

@@ -1,5 +1,4 @@
 import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from "typeorm"
-import { Exclude } from "class-transformer"
 import { AuditEntity } from "./audit.entity"
 import { Vehicle } from "./vehicle.entity"
 import { TrafficViolation } from "./traffic_violation.entity"
@@ -12,10 +11,6 @@ export class User extends AuditEntity {
 
     @Column({ nullable: false })
     username: string
-
-    @Column({ nullable: false })
-    @Exclude()
-    password: string
 
     @Column({ nullable: false })
     email: string

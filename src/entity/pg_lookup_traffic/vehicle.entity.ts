@@ -14,6 +14,9 @@ export class Vehicle extends AuditEntity {
   @Column({ nullable: false })
     vehicle_number: string;
 
+  @Column({ nullable: false })
+    image_url: string;
+
   @Column({ nullable: true })
     vehicle_type: string;
 
