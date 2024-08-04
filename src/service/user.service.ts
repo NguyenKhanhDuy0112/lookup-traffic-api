@@ -14,6 +14,7 @@ export class UserService extends BaseService {
     }
 
     async getUserById(userId: string): Promise<StandardResponse<User>> {
+        console.log("userId: ", userId)
         const user = await this.userRepository.findOne({
             where: { id: userId },
             relations: ["vehicles", "violations", "licenses"],

@@ -16,6 +16,7 @@ export class UserController {
     @Get("/profile")
     @ApiResponse({ type: UserEntity, status: 200 })
     async getProfile(@User() user): Promise<StandardResponse<UserEntity>> {
-        return this.userService.getUserById(user.id)
+        console.log("user: ", user)
+        return this.userService.getUserById(user.payload?.user_id)
     }
 }

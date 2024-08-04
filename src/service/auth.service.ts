@@ -150,6 +150,7 @@ export class AuthService extends BaseService {
     async IsUserExisted(dto: AuthCheckExist) {
         try {
             const findPhone = await this.userRepo.findOne({ where: { phone_number: dto?.phone } })
+            
             if (!findPhone?.id) {
                 return this.throwErrorResponse(
                     {},
